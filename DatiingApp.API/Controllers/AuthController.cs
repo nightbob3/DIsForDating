@@ -33,6 +33,7 @@ namespace DatiingApp.API.Controllers
         {
             // validate request under construction
 
+            
             userForRegister.Username = userForRegister.Username.ToLower();
 
             if(await _repo.UserExists(userForRegister.Username))
@@ -55,6 +56,7 @@ namespace DatiingApp.API.Controllers
 
         public async Task<IActionResult> Login(UserForLoginDto userForLoginDto)
         {
+            
             var userFromRepo = await _repo.Login(userForLoginDto.Username.ToLower(), userForLoginDto.Password);
 
             if(userFromRepo == null)
