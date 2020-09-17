@@ -12,6 +12,12 @@
     },
     {
       "path": "./tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/tony-is-gay/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/tony-is-gay/tsconfig.spec.json"
     }
 ]
 }

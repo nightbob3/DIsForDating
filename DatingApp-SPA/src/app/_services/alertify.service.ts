@@ -11,7 +11,7 @@ constructor() { }
 confirm(message: string, okcallback: () => any)
 {
   alertify.confirm(message, (e: any) => {
-    if (e) { okcallback(); } 
+    if (e) { okcallback(); }
     else {}
   });
 }

@@ -123,6 +123,46 @@
           }
         }
       }
+    },
+    "TonyIsGay": {
+      "projectType": "library",
+      "root": "projects/tony-is-gay",
+      "sourceRoot": "projects/tony-is-gay/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/tony-is-gay/tsconfig.lib.json",
+            "project": "projects/tony-is-gay/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/tony-is-gay/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/tony-is-gay/src/test.ts",
+            "tsConfig": "projects/tony-is-gay/tsconfig.spec.json",
+            "karmaConfig": "projects/tony-is-gay/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/tony-is-gay/tsconfig.lib.json",
+              "projects/tony-is-gay/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "DatingApp-SPA"
