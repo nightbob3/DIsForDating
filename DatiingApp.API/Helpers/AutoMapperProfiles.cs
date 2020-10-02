@@ -21,6 +21,8 @@ namespace DatiingApp.API.Helpers
             .ForMember(dest => dest.Age, opt =>
                 opt.MapFrom(src => src.DateOfBirth.GetAge()));
             CreateMap<Photo, PhotosForDetailedDto>();
+
+            CreateMap<UserForUpdatesDto, User>(); 
             
         }
     }

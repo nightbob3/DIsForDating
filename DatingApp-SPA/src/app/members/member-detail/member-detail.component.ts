@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { User } from 'src/app/_models/user';
 import { AlertifyService } from '../../_services/alertify.service';
 import { UserService } from 'src/app/_services/user.service';
-import { NgxGalleryAnimation, NgxGalleryImage, NgxGalleryOptions } from 'ngx-gallery';
+import { NgxGalleryAnimation, NgxGalleryImage, NgxGalleryOptions } from 'ngx-gallery-9';
 
 @Component({
   selector: 'app-member-detail',
@@ -16,7 +16,9 @@ export class MemberDetailComponent implements OnInit {
   galleryOptions: NgxGalleryOptions[];
   galleryImages: NgxGalleryImage[];
 
-  constructor(private userService: UserService, private alertify: AlertifyService, private route: ActivatedRoute) { }
+  constructor(private userService: UserService,
+              private alertify: AlertifyService,
+              private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.route.data.subscribe(data => {
@@ -34,7 +36,7 @@ export class MemberDetailComponent implements OnInit {
 
       }
     ];
-    this.galleryImages = [];
+    this.galleryImages = this.getImages();
   }
 
   getImages() {
