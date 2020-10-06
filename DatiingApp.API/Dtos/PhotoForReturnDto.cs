@@ -1,8 +1,8 @@
 using System;
 
-namespace DatiingApp.API.Models
+namespace DatiingApp.API.Controllers
 {
-    public class Photo
+    public class PhotoForReturnDto
     {
         public int Id { get; set; }
 
@@ -14,13 +14,6 @@ namespace DatiingApp.API.Models
 
         public bool IsMain { get; set; }
 
-        public User User {get; set;}
-
-        public int UserId { get; set; }
-
         public string PublicId { get; set; }
-        
-
-
     }
 }

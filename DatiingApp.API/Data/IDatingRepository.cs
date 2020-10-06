@@ -16,6 +16,8 @@ namespace DatiingApp.API.Data
 
         Task<IEnumerable<User>> GetUsers();
 
-        
+        Task<Photo> GetPhoto(int id);
+
+        Task<Photo> GetMainPhoto(int userId);
     }
 }

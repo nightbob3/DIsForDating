@@ -3,6 +3,7 @@ using AutoMapper;
 using DatiingApp.API.Dtos;
 using DatiingApp.API.Models;
 using DatiingApp.API.Helpers;
+using DatiingApp.API.Controllers;
 
 namespace DatiingApp.API.Helpers
 {
@@ -23,7 +24,8 @@ namespace DatiingApp.API.Helpers
             CreateMap<Photo, PhotosForDetailedDto>();
 
             CreateMap<UserForUpdatesDto, User>(); 
-            
+            CreateMap<Photo, PhotoForReturnDto>();
+            CreateMap<PhotoForCreationDto, Photo>();
         }
     }
 }

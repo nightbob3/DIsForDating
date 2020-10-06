@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using DatiingApp.API.Models;
 using Microsoft.EntityFrameworkCore;
@@ -23,6 +24,18 @@ namespace DatiingApp.API.Data
         {
             
             _context.Remove(entity);
+        }
+
+        public async Task<Photo> GetMainPhoto(int userId)
+        {
+            return await _context.Photos.Where(p => p.UserId == userId).FirstOrDefaultAsync(p => p.IsMain);
+            
+        }
+
+        public async Task<Photo> GetPhoto(int id)
+        {
+           return await _context.Photos.FirstOrDefaultAsync(p => p.Id == id);
+           
         }
 
         public Task<User> GetUser(int id)
