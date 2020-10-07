@@ -3,6 +3,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
 using DatiingApp.API.Data;
 using DatiingApp.API.Dtos;
 using DatiingApp.API.Models;
@@ -19,11 +20,13 @@ namespace DatiingApp.API.Controllers
     {
         private readonly IAuthRepo _repo;
         private readonly IConfiguration _config;
+        private readonly IMapper _map;
 
-        public AuthController(IAuthRepo repo, IConfiguration config)
+        public AuthController(IAuthRepo repo, IConfiguration config, IMapper map)
         {
             _repo = repo;
             _config = config;
+            _map = map;
         }
 
 
@@ -58,6 +61,7 @@ namespace DatiingApp.API.Controllers
         {
             
             var userFromRepo = await _repo.Login(userForLoginDto.Username.ToLower(), userForLoginDto.Password);
+            
 
             if(userFromRepo == null)
             {
@@ -83,12 +87,14 @@ namespace DatiingApp.API.Controllers
                 SigningCredentials = creds
             };
 
-            
+            var user = _map.Map<UserForListDto>(userFromRepo);
+
             var tokenHandler = new JwtSecurityTokenHandler();
             var token = tokenHandler.CreateToken(tokenDescriptor);
 
             return Ok(new {
-                token = tokenHandler.WriteToken(token)
+                token = tokenHandler.WriteToken(token),
+                user
             });
             
             
