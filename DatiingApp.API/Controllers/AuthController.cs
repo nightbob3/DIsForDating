@@ -44,15 +44,15 @@ namespace DatiingApp.API.Controllers
                 return BadRequest("Username already exists");
             }
 
-            var userToCreate = new User
-            {
-                Username = userForRegister.Username
-                
-            };
+            var userToCreate = _map.Map<User>(userForRegister);
+            
 
             var createdUser = await _repo.Register(userToCreate, userForRegister.Password);
 
-            return StatusCode(201);
+            var userToReturn = _map.Map<UserForDetailedDto>(createdUser);
+
+            return CreatedAtRoute("GetUser", new {controller = "Users", id = createdUser.Id}, userToReturn);
+            
         }
         
         [HttpPost("Login")]

@@ -36,13 +36,14 @@ constructor(private http: HttpClient) { }
           this.decodedToken = this.jwtHelper.decodeToken(user.token);
           this.currentUser = user.user;
           this.changeMemberPhoto(this.currentUser.photoUrl);
+          this.http.get(this.baseUrl + '/members')
         }
       })
     );
 }
 
-  register(model: any) {
-    return this.http.post(this.baseUrl + 'register', model);
+  register(user: User) {
+    return this.http.post(this.baseUrl + 'register', user);
   }
 
   loggedIn() {

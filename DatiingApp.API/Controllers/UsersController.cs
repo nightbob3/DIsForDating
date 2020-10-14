@@ -5,11 +5,13 @@ using System.Threading.Tasks;
 using AutoMapper;
 using DatiingApp.API.Data;
 using DatiingApp.API.Dtos;
+using DatiingApp.API.Helpers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DatiingApp.API.Controllers
 {
+    [ServiceFilter(typeof(LogUserActivity))]
     [Authorize]
     [Route("api/[controller]")]
     [ApiController]
@@ -33,7 +35,7 @@ namespace DatiingApp.API.Controllers
             return Ok(usersToReturn);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name = "GetUser")]
 
         public async Task<IActionResult> GetUser(int id)
         {
