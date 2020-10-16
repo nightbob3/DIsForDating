@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using DatiingApp.API.Helpers;
 using DatiingApp.API.Models;
 
 namespace DatiingApp.API.Data
@@ -14,10 +15,12 @@ namespace DatiingApp.API.Data
 
         Task<User> GetUser(int id);
 
-        Task<IEnumerable<User>> GetUsers();
+        Task<PagedList<User>> GetUsers(UserParams userParams);
 
         Task<Photo> GetPhoto(int id);
 
         Task<Photo> GetMainPhoto(int userId);
+
+        Task<Like> GetLike(int userId, int recipientId);
     }
 }

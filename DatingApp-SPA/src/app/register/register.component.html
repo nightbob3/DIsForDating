@@ -16,8 +16,7 @@
     <input type="text" 
     [ngClass]="{'is-invalid' : registerForm.get('username').errors
       && registerForm.get('username').touched}"
-    class="form-control" formControlName="username" 
-    [(ngModel)]="model" 
+    class="form-control" formControlName="username"
     placeholder="Username">
     <div class="invalid-feedback">Please choose a username</div>
   </div>
@@ -50,7 +49,6 @@
     <input type="password" class="form-control" formControlName="password" 
     [ngClass]="{'is-invalid' : registerForm.get('password').errors
       && registerForm.get('password').touched}"
-    [(ngModel)]="model"
     placeholder="Password">
     <div class="invalid-feedback" 
     *ngIf="registerForm.get('password').hasError('required')
@@ -69,7 +67,6 @@
         && registerForm.get('confirmPassword').touched
         || registerForm.get('confirmPassword').touched
         && registerForm.hasError('mismatch')}"
-    [(ngModel)]="model" 
     placeholder="Confirm Password">
     <div class="invalid-feedback"
       *ngIf="registerForm.hasError('mismatch')
